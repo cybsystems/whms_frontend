@@ -1,26 +1,25 @@
 import { Checklist, Inbox, Inventory } from "@mui/icons-material";
 import {
   Box,
-  Card,
-  CardContent,
   Container,
   Grid,
-  Typography,
+  Paper,
+  Typography
 } from "@mui/material";
 import React, { useContext } from "react";
 
 import LocationTable from "../../components/LocationTable";
+import PaperContainer from "../../components/PaperContainer";
 import PartTable from "../../components/PartTable";
 import { InwardContext } from "../../context/InwardContext";
 import { LocationContext } from "../../context/LocationContext";
 import { PartContext } from "../../context/PartContext";
 import { PickListContext } from "../../context/PickListContext";
-import { PutawayContext } from "../../context/PutawayContext ";
 
 const DashboardCard = ({ title, icon, children }) => {
   return (
-    <Card sx={{ boxShadow: 1, borderRadius: 2 }}>
-      <CardContent>
+    <Paper style={{ padding: 20, borderRadius: 5 }}>
+      <>
         <Box display="flex" alignItems="center" mb={2}>
           {icon}
           <Typography variant="h5" component="div">
@@ -32,15 +31,14 @@ const DashboardCard = ({ title, icon, children }) => {
             {children}
           </Typography>
         </Box>
-      </CardContent>
-    </Card>
+      </>
+    </Paper>
   );
 };
 
 const DashboardContent = () => {
   const { inwardItems } = useContext(InwardContext);
   const { parts } = useContext(PartContext);
-  const { putawayItems } = useContext(PutawayContext);
   const { locations } = useContext(LocationContext);
   const { pickLists } = useContext(PickListContext);
 
@@ -91,19 +89,22 @@ const DashboardContent = () => {
             {pickLists.length}
           </DashboardCard>
         </Grid>
-
       </Grid>
       <Grid container style={{ marginTop: 40 }}>
-        <Typography variant="h5" gutterBottom>
-          Parts
-        </Typography>
-        <PartTable hideAction={true} />
+        <PaperContainer>
+          <Typography variant="h5" gutterBottom>
+            Parts
+          </Typography>
+          <PartTable hideAction={true} />
+        </PaperContainer>
       </Grid>
       <Grid container style={{ marginTop: 40 }}>
-        <Typography variant="h5" gutterBottom>
-          Locations
-        </Typography>
-        <LocationTable />
+        <PaperContainer style={{ padding: 20, width: "100%" }}>
+          <Typography variant="h5" gutterBottom>
+            Locations
+          </Typography>
+          <LocationTable />
+        </PaperContainer>
       </Grid>
     </Container>
   );

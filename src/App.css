@@ -1,5 +1,5 @@
-.MuiTableHead-root{
-  background-color: #e8e8f8;
+.MuiDataGrid-columnHeaders > div{
+  background-color: #e8e8f8 !important;
 }
 
 .MuiTableCell-head{

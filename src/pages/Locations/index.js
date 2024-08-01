@@ -3,6 +3,7 @@ import { Container, Typography, Button } from "@mui/material";
 import LocationTable from "../../components/LocationTable";
 import AddLocationPopup from "../../components/AddLocationPopup";
 import { LocationProvider } from "../../context/LocationContext";
+import PaperContainer from "../../components/PaperContainer";
 
 const Locations = () => {
   const [showAddLocationPopup, setShowAddLocationPopup] = useState(false);
@@ -20,7 +21,9 @@ const Locations = () => {
         >
           Add Location
         </Button>
-        <LocationTable />
+        <PaperContainer>
+          <LocationTable />
+        </PaperContainer>
         {showAddLocationPopup && (
           <AddLocationPopup closePopup={() => setShowAddLocationPopup(false)} />
         )}

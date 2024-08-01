@@ -1,30 +1,19 @@
-import React, { useContext } from 'react';
-import { InwardContext } from '../context/InwardContext';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import React, { useContext } from "react";
+import { InwardContext } from "../context/InwardContext";
+import DataTable from "./DataTable";
+import PaperContainer from "./PaperContainer";
 
 const InwardList = () => {
   const { inwardItems } = useContext(InwardContext);
+  const columns = [
+    { headerName: "Part", field: "part" },
+    { headerName: "Quantity", field: "quantity" },
+    { headerName: "Date", field: "date" },
+  ];
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Part</TableCell>
-            <TableCell>Quantity</TableCell>
-            <TableCell>Date</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {inwardItems.map((item, index) => (
-            <TableRow key={index}>
-              <TableCell>{item.part}</TableCell>
-              <TableCell>{item.quantity}</TableCell>
-              <TableCell>{new Date(item.date).toLocaleDateString()}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <PaperContainer>
+      <DataTable rows={inwardItems} columns={columns} />
+    </PaperContainer>
   );
 };
 

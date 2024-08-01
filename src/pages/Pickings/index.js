@@ -1,12 +1,8 @@
 import { Paper } from "@mui/material";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
 import React, { useEffect, useState } from "react";
-import apiInstance from "../../services/api";
 import PartsModal from "../../components/PartsModal";
+import apiInstance from "../../services/api";
+import DataTable from "../../components/DataTable";
 
 const PickingListPage = (props) => {
   const [pickings, setPickings] = useState([]);
@@ -38,7 +34,7 @@ const PickingListPage = (props) => {
       fetchPickings();
     } catch (error) {}
   };
-
+  const columns = [{ header: "Name", field: "name" }];
   return (
     <Paper style={{ padding: 16 }}>
       {selectedPicklist && (
@@ -48,27 +44,13 @@ const PickingListPage = (props) => {
           pickList={selectedPicklist}
         />
       )}
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Name </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {pickings.map((row) => (
-            <TableRow
-              style={{ cursor: "pointer" }}
-              onClick={() => onRowSelect(row)}
-              key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <DataTable
+        rows={pickings}
+        columns={columns}
+        onRowClick={({row}) => {
+          onRowSelect(row)
+        }}
+      />
     </Paper>
   );
 };
