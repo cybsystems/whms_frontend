@@ -1,30 +1,16 @@
-import React, { useContext } from 'react';
-import { LocationContext } from '../context/LocationContext';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import React, { useContext } from "react";
+import { LocationContext } from "../context/LocationContext";
+import DataTable from "./DataTable";
 
 const LocationTable = () => {
   const { locations } = useContext(LocationContext);
 
-  return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Description</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {locations.map((location, index) => (
-            <TableRow key={index}>
-              <TableCell>{location.name}</TableCell>
-              <TableCell>{location.description}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+  const columns = [
+    { field: "name", headerName: "Location" },
+    { field: "description", headerName: "Description" },
+  ];
+
+  return <DataTable rows={locations} columns={columns} />;
 };
 
 export default LocationTable;

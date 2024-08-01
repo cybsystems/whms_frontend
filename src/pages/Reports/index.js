@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Paper, Select } from "@mui/material";
 import { useState } from "react";
 import apiInstance from "../../services/api";
-import DataTable from "../../components/DataTable";
+import ReportsDataTable from "../../components/ReportsDataTable";
 
 const reportOptions = [
     { api: 'inward-items', text: 'Inward', id: 1 },
@@ -29,7 +29,7 @@ const ReportsPage = () => {
 
         }
     }
-
+    console.log({reportsData})
     const { columns, rows } = reportsData
     return (
         <Paper style={{ padding: 10 }}>
@@ -46,7 +46,7 @@ const ReportsPage = () => {
                 </Select>
             </FormControl>
 
-            <DataTable
+            <ReportsDataTable
                 columns={columns || []}
                 rows={rows || []}
 

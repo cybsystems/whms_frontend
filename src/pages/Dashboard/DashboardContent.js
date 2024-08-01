@@ -44,7 +44,6 @@ const DashboardContent = () => {
   const { locations } = useContext(LocationContext);
   const { pickLists } = useContext(PickListContext);
 
-  console.log({pickLists})
   return (
     <Container style={{ maxHeight: "100%", overflow: "scroll" }}>
       <Typography variant="h4" gutterBottom>
