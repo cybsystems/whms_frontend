@@ -1,0 +1,29 @@
+.sidebar {
+    background-color: #2f3478;
+    color: white;
+    width: 100%;
+  }
+  
+  .navList {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .navItem {
+    color: white;
+    border-radius: 15px 0 0 15px;
+  }
+  
+  .navItemActive {
+    background-color: #f6f6fa;
+    color: black;
+  }
+  
+  .navItemIcon {
+    color: inherit; /* Inherit color from parent */
+    min-width: 0;
+  }
+  
+  .navItemText {
+    margin-left: 10px;
+  }
