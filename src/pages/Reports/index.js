@@ -47,7 +47,7 @@ const ReportsPage = () => {
             </FormControl>
 
             <ReportsDataTable
-                columns={columns || []}
+                columns={columns?.map((item)=>({...item,width:300})) || []}
                 rows={rows || []}
 
             />

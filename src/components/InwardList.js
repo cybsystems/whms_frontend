@@ -6,9 +6,9 @@ import PaperContainer from "./PaperContainer";
 const InwardList = () => {
   const { inwardItems } = useContext(InwardContext);
   const columns = [
-    { headerName: "Part", field: "part" },
-    { headerName: "Quantity", field: "quantity" },
-    { headerName: "Date", field: "date" },
+    { headerName: "Part", field: "part" ,width: 200},
+    { headerName: "Quantity", field: "quantity",width: 200 },
+    { headerName: "Date", field: "date" ,width: 200},
   ];
   return (
     <PaperContainer>

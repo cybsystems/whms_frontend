@@ -34,7 +34,7 @@ const PickingListPage = (props) => {
       fetchPickings();
     } catch (error) {}
   };
-  const columns = [{ header: "Name", field: "name" }];
+  const columns = [{ headerName: "Name", field: "name",width: 500 }];
   return (
     <Paper style={{ padding: 16 }}>
       {selectedPicklist && (
