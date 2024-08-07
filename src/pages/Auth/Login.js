@@ -27,8 +27,11 @@ const Login = () => {
 
       // Save the token to local storage and context
       setAuthToken(token);
+      window.location.reload()
+      // setTimeout(()=>{
+      //   navigate("/");
+      // },1000)
 
-      navigate("/");
     } catch (err) {
       console.log(err);
       setError(err.message ? err.message : "Login failed");
